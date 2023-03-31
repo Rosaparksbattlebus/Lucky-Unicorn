@@ -1,3 +1,7 @@
+#Simplifies the input by converting it into lower case.
+# Also accepts 'y' and 'n' as abbreviations. Prints result of user choice.
+
+
 # Ask user if they have played before
 show_instructions = input("Have you played this game before? Enter 'yes' or 'no': ").lower()
 
