@@ -3,6 +3,7 @@ Components added after they have been created and tested
 """
 import random
 
+
 # Functions go here...
 def yes_no(question_text):
     while True:
@@ -65,6 +66,9 @@ def generate_token(balance):
         if 1 <= percent <= 5:
             token = "unicorn"
             balance += 4
+            print()
+            print(formatter("!", "Congratulations, you got a Unicorn"))
+            print()
         # if random number is between 6 and 36, token is donkey -$1
         elif 6 <= percent <= 36:
             token = "donkey"
@@ -78,6 +82,7 @@ def generate_token(balance):
             else:
                 token = "horse"
             balance -= 0.5
+        print()
         print(f"Round {rounds_played}. Token: {token}, Balance: ${balance:.2f}")
         question = input("Press 'x' to exit or <enter> to continue: ")
         if question == "x":
@@ -89,7 +94,18 @@ def generate_token(balance):
     return balance
 
 
+# function to format text output
+def formatter(symbol, text):
+    sides = symbol * 3
+    formatted_text = f"{sides} {text} {sides}"
+    top_bottom = symbol * len(formatted_text)
+    return f"{top_bottom}\n{formatted_text}\n{top_bottom}"
+
+
 # Main routine go here...
+print(formatter("-", "Welcome to the Lucky Unicorn Game"))
+print()
+
 played_before = yes_no("Have you played this game before? ")
 
 if played_before == "No":
@@ -99,9 +115,10 @@ if played_before == "No":
 starting_balance = num_check("How much would you like to play with? $", 1, 10)
 print(f"You are playing with ${starting_balance}")
 
-
 closing_balance = generate_token(starting_balance)
 print()
 print("Thanks for playing")
 print(f"Starting balance = ${starting_balance:.2f}")
 print(f"End balance = ${closing_balance:.2f}")
+print()
+print(formatter("*", "Goodbye"))
